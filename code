@@ -1,0 +1,23 @@
+# Import the `Client` class from the `twilio.rest` module to interact with Twilio's REST API.
+from twilio.rest import Client
+
+# Replace `account_sid` and `auth_token` with your actual Twilio account SID and authentication token.
+account_sid = "your_account_sid"
+auth_token = "your_auth_token"
+
+# Create a new `Client` instance, providing your Twilio account SID and authentication token.
+client = Client(account_sid, auth_token)
+
+# Use the `client.messages.create()` method to send a new SMS message.
+# Replace `from_` and `to` with the appropriate phone numbers. 
+# `from_` is the Twilio phone number you have acquired or verified on your Twilio account.
+# `to` is the recipient's phone number to which you want to send the message.
+message = client.messages.create(
+    body="This is sent from Python",  # The content of the SMS message.
+    from_="your_twilio_phone_number",  # Replace with your Twilio phone number.
+    to="recipient_phone_number",      # Replace with the recipient's phone number.
+)
+
+# Print the `sid` of the created message, which serves as a unique identifier for the message.
+print(message.sid)
+
